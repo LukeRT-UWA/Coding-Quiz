@@ -10,8 +10,9 @@ var containerEl = document.getElementById('container')
 var scoreEl = document.getElementById('score')
 var startagainEl = document.getElementById('startagain')
 var timerEl = document.getElementById('timer')
+var highscoresEl = document.getElementById('highscores')
 var timer;
-
+var timerCount = 0
 startButtonEl.addEventListener('click', startGame)
 startagainEl.addEventListener('click', refreshpage);
 function refreshpage(){
@@ -26,8 +27,9 @@ function startGame() {
     timerEl.classList.remove('hide')
     scoreEl.innerText = "";
     questionsContainerEl.classList.remove('hide')
+    highscoresEl.classList.add('hide')
     score=0;
-    timerCount = 10;
+    timerCount = 30;
     startTimer();
     questions1();
 }
@@ -46,17 +48,17 @@ function questions1() {
     });
     answer2El.addEventListener('click', function(){
 
-        
+        timerCount = timerCount - 5;
         questions2();
     });
     answer3El.addEventListener('click', function(){
 
-        
+        timerCount = timerCount - 5;
         questions2();
     });
     answer4El.addEventListener('click', function(){
 
-        
+        timerCount = timerCount - 5;
         questions2();
     });
 
@@ -80,23 +82,23 @@ function questions2() {
 
     answer1El.addEventListener('click', function(){
 
-        
-        final();
+        timerCount = timerCount - 5
+        questions3();
     });
     answer2El.addEventListener('click', function(){
 
-        
-        final();
+        timerCount = timerCount - 5
+        questions3();
     });
     answer3El.addEventListener('click', function(){
 
         ++score;
-        final();
+        questions3();
     });
     answer4El.addEventListener('click', function(){
 
-        
-        final();
+        timerCount = timerCount - 5
+        questions3();
     });
 }
 
@@ -109,12 +111,92 @@ var question2 = {
     answer4: "Answers4"
 }
 
-function final() {
+function questions3() {
+    console.log("I'm Question 2")
+    questionEl.innerText = question3.question;
+    answer1El.innerText = question3.answer1;
+    answer2El.innerText = question3.answer2;
+    answer3El.innerText = question3.answer3;
+    answer4El.innerText = question3.answer4;
 
+    answer1El.addEventListener('click', function(){
+
+        timerCount = timerCount - 5
+        questions4();
+    });
+    answer2El.addEventListener('click', function(){
+
+        timerCount = timerCount - 5
+        questions4();
+    });
+    answer3El.addEventListener('click', function(){
+
+        ++score;
+        questions4();
+    });
+    answer4El.addEventListener('click', function(){
+
+        timerCount = timerCount - 5
+        questions4();
+    });
+}
+
+
+var question3 = {
+    question: "Whatsdfasdf is this",
+    answer1: "Answers",
+    answer2: "Answers2",
+    answer3: "Answers3Correct",
+    answer4: "Answers4"
+}
+
+function questions3() {
+    console.log("I'm Question 2")
+    questionEl.innerText = question3.question;
+    answer1El.innerText = question3.answer1;
+    answer2El.innerText = question3.answer2;
+    answer3El.innerText = question3.answer3;
+    answer4El.innerText = question3.answer4;
+
+    answer1El.addEventListener('click', function(){
+
+        timerCount = timerCount - 5
+        final();
+    });
+    answer2El.addEventListener('click', function(){
+
+        timerCount = timerCount - 5
+        final();
+    });
+    answer3El.addEventListener('click', function(){
+
+        ++score;
+        final();
+    });
+    answer4El.addEventListener('click', function(){
+
+        timerCount = timerCount - 5
+        final();
+    });
+}
+
+
+var question4 = {
+    question: "Whatsdfasdf is this",
+    answer1: "Answers",
+    answer2: "Answers2",
+    answer3: "Answers3Correct",
+    answer4: "Answers4"
+}
+function final() {
+    
+    clearInterval(timer);
     console.log("I'm Final")
     questionsContainerEl.classList.add('hide');
     scoreEl.innerText = ("You scored " + score + " points!")   
     startagainEl.classList.remove('hide');
+    timerEl.textContent = ""
+    highscoresEl.classList.remove('hide')
 }
 
 function startTimer() {
@@ -125,6 +207,7 @@ function startTimer() {
           if (timerCount === 0) {
         clearInterval(timer);
         timerEl.textContent = ""
+        window.alert("Out of time!")
         final();
       }
     }, 1000);
