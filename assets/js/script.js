@@ -30,7 +30,7 @@ highscoresEl.addEventListener('click', renderScores);
 //Begin Game
 function startGame() {
 
-    console.log("I'm StartGame")
+    
     startButtonEl.classList.add('hide')
     startagainEl.classList.add('hide')
     timerEl.classList.remove('hide')
@@ -44,7 +44,7 @@ function startGame() {
 }
 //Questions and answer buttons
 function questions1() {
-    console.log("I'm Question 1")
+   
     questionEl.innerText = question1.question;
     answer1El.innerText = question1.answer1;
     answer2El.innerText = question1.answer2;
@@ -82,7 +82,7 @@ var question1 = {
 }
 
 function questions2() {
-    console.log("I'm Question 2")
+    
     questionEl.innerText = question2.question;
     answer1El.innerText = question2.answer1;
     answer2El.innerText = question2.answer2;
@@ -160,7 +160,7 @@ var question3 = {
 }
 
 function questions4() {
-    console.log("I'm Question 2")
+  
     questionEl.innerText = question4.question;
     answer1El.innerText = question4.answer1;
     answer2El.innerText = question4.answer2;
@@ -201,7 +201,7 @@ var question4 = {
 function final() {
     
     clearInterval(timer);
-    console.log("I'm Final")
+
     questionsContainerEl.classList.add('hide');
     scoreEl.innerText = ("You scored " + score + " points!")   
     
@@ -245,7 +245,7 @@ function startTimer() {
 
   function storeScores() {
 	localStorage.setItem('playerfinalscores', JSON.stringify(playerfinalscores));
-    console.log(playerfinalscores);
+   
 }
 
 function renderScores() {
