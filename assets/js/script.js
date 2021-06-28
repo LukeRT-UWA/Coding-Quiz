@@ -1,6 +1,6 @@
+//DOM Selection
 var startButtonEl = document.getElementById('start')
 var questionsContainerEl = document.getElementById('questions-container')
-var score = 0;
 var questionEl = document.getElementById('question')
 var answer1El = document.getElementById('1')
 var answer2El = document.getElementById('2')
@@ -11,14 +11,23 @@ var scoreEl = document.getElementById('score')
 var startagainEl = document.getElementById('startagain')
 var timerEl = document.getElementById('timer')
 var highscoresEl = document.getElementById('highscores')
+var scoreInputEl = document.getElementById('score-input')
+var nameInputEl = document.getElementById('nameinput')
+var highscorelistEl = document.getElementById('highscorelist')
+//Score and time values
+var score = 0;
 var timer;
 var timerCount = 0
+var playerfinalscores = []
+//Start Button
 startButtonEl.addEventListener('click', startGame)
+//Click to clear and refresh
 startagainEl.addEventListener('click', refreshpage);
 function refreshpage(){
     window.location.reload();
 }
-
+highscoresEl.addEventListener('click', renderScores);
+//Begin Game
 function startGame() {
 
     console.log("I'm StartGame")
@@ -33,7 +42,7 @@ function startGame() {
     startTimer();
     questions1();
 }
-
+//Questions and answer buttons
 function questions1() {
     console.log("I'm Question 1")
     questionEl.innerText = question1.question;
@@ -47,29 +56,29 @@ function questions1() {
         questions2();
     });
     answer2El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5;
+        --timerCount
+        --timerCount
         questions2();
     });
     answer3El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5;
+        --timerCount
+        --timerCount
         questions2();
     });
     answer4El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5;
+        --timerCount
+        --timerCount
         questions2();
     });
 
     
 }
 var question1 = {
-    question: "What is this",
-    answer1: "Thing1Correct",
-    answer2: "Thing2",
-    answer3: "Thing3",
-    answer4: "Thing4"
+    question: "Commonly used data types DO NOT include:",
+    answer1: "Alerts(Correct)",
+    answer2: "Booleans",
+    answer3: "Strings",
+    answer4: "Numbers"
 }
 
 function questions2() {
@@ -81,13 +90,13 @@ function questions2() {
     answer4El.innerText = question2.answer4;
 
     answer1El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         questions3();
     });
     answer2El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         questions3();
     });
     answer3El.addEventListener('click', function(){
@@ -96,23 +105,23 @@ function questions2() {
         questions3();
     });
     answer4El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         questions3();
     });
 }
 
 
 var question2 = {
-    question: "Whatsdfasdf is this",
-    answer1: "Answers",
-    answer2: "Answers2",
-    answer3: "Answers3Correct",
-    answer4: "Answers4"
+    question: "The condition in an if/else statement is enclosed within",
+    answer1: "Quotes",
+    answer2: "Curly Brackets",
+    answer3: "Parentheses (correct)",
+    answer4: "Square Brackets"
 }
 
 function questions3() {
-    console.log("I'm Question 2")
+    
     questionEl.innerText = question3.question;
     answer1El.innerText = question3.answer1;
     answer2El.innerText = question3.answer2;
@@ -120,52 +129,52 @@ function questions3() {
     answer4El.innerText = question3.answer4;
 
     answer1El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         questions4();
     });
     answer2El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         questions4();
     });
     answer3El.addEventListener('click', function(){
-
-        ++score;
+        --timerCount
+        --timerCount
         questions4();
     });
     answer4El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+    
+        ++score;
         questions4();
     });
 }
 
 
 var question3 = {
-    question: "Whatsdfasdf is this",
-    answer1: "Answers",
-    answer2: "Answers2",
-    answer3: "Answers3Correct",
-    answer4: "Answers4"
+    question: "Arrays in Javascript can be used to store ____",
+    answer1: "Numbers and strings",
+    answer2: "Other Arrays",
+    answer3: "Booleans",
+    answer4: "All of the above"
 }
 
-function questions3() {
+function questions4() {
     console.log("I'm Question 2")
-    questionEl.innerText = question3.question;
-    answer1El.innerText = question3.answer1;
-    answer2El.innerText = question3.answer2;
-    answer3El.innerText = question3.answer3;
-    answer4El.innerText = question3.answer4;
+    questionEl.innerText = question4.question;
+    answer1El.innerText = question4.answer1;
+    answer2El.innerText = question4.answer2;
+    answer3El.innerText = question4.answer3;
+    answer4El.innerText = question4.answer4;
 
     answer1El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         final();
     });
     answer2El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         final();
     });
     answer3El.addEventListener('click', function(){
@@ -174,33 +183,33 @@ function questions3() {
         final();
     });
     answer4El.addEventListener('click', function(){
-
-        timerCount = timerCount - 5
+        --timerCount
+        --timerCount
         final();
     });
 }
 
 
 var question4 = {
-    question: "Whatsdfasdf is this",
-    answer1: "Answers",
-    answer2: "Answers2",
-    answer3: "Answers3Correct",
-    answer4: "Answers4"
+    question: "String values must be enclosed within ___ when being used to assign variables",
+    answer1: "Commass",
+    answer2: "Curly Brackets",
+    answer3: "Quotes Correct",
+    answer4: "Parentheses"
 }
+//Produces results
 function final() {
     
     clearInterval(timer);
     console.log("I'm Final")
     questionsContainerEl.classList.add('hide');
     scoreEl.innerText = ("You scored " + score + " points!")   
-    startagainEl.classList.remove('hide');
+    
     timerEl.textContent = ""
-    highscoresEl.classList.remove('hide')
+    scoreInputEl.classList.remove('hide')
 }
-
+//Timer Function
 function startTimer() {
-    // Sets timer
     timer = setInterval(function() {
       timerCount--;
       timerEl.textContent = timerCount + " seconds left!";
@@ -213,3 +222,51 @@ function startTimer() {
     }, 1000);
   }
 
+//High Scores Functions
+
+//High Scores Button
+
+  scoreInputEl.addEventListener('submit', function(event) {
+	event.preventDefault();
+
+	var playernamescore = (nameInputEl.value + " " + score);
+	if (nameInputEl.value === '') {
+		return false;
+	}
+	playerfinalscores.push(playernamescore);
+	scoreInputEl.value = '';
+    startagainEl.classList.remove('hide');
+    nameInputEl.classList.add('hide');
+    scoreEl.innerText = "";
+	storeScores();
+	renderScores();
+
+  })
+
+  function storeScores() {
+	localStorage.setItem('playerfinalscores', JSON.stringify(playerfinalscores));
+    console.log(playerfinalscores);
+}
+
+function renderScores() {
+	for (var i = 0; i < playerfinalscores.length; i++) {
+		var playerfinalscore = playerfinalscores[i];
+
+		var li = document.createElement('li');
+		li.textContent = playerfinalscore;
+		li.setAttribute('data-index', i);
+
+		highscorelistEl.appendChild(li);
+	}
+}
+
+function init() {
+    var storedplayerfinalscores = JSON.parse(localStorage.getItem("playerfinalscores"));
+   
+    if (storedplayerfinalscores !== null) {
+        playerfinalscores = storedplayerfinalscores;
+    }
+  
+  }
+
+  init();
