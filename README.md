@@ -1,4 +1,4 @@
-![Website Screenshot](assets/images/websitescreenshot.jpg)
+![Website Screenshot](assets/images/websitescreenshot.JPG)
 
 Assignment number four - coding quiz challenge.
 
