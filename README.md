@@ -8,4 +8,4 @@ Includes quiz with timer, timer is deducted on wrong answer. Game ends on timer 
 
 If I were to do this again I would redo my question logic entirely. I would also polish my styling much more.
 
-https://lukert-uwa.github.io/HomeworkFour/
+https://lukert-uwa.github.io/Coding-Quiz/
